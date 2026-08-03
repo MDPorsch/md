@@ -1,32 +1,17 @@
-# Mohammed Orunsolu — Portfolio
+# Mohammed Orunsolu
 
-Clean, professional single-page portfolio for a Security Engineer and founder.
+Security engineer and founder. I build secure products and stand up security programs from zero.
 
-**Live structure**
-- Hero with live status, name, tagline, and key stats
-- Background / Who I am
-- Education & certifications
-- Work experience (Breachrr + Verixar)
-- Capabilities (skills grouped by domain)
-- Contact
+I founded and operate **Breachrr**, a credential exposure monitoring platform that continuously surfaces breached credentials, infostealer log entries, exposed secrets in public code, and misconfigured domain infrastructure — the kind of continuous monitoring that historically required a Fortune 500 security budget, built for small companies. I shipped the platform end-to-end as a solo founder: backend, frontend, security architecture, and infrastructure.
 
-## How to view locally
+I also lead information security at **Verixar Ltd.**, a seed-stage InsurTech building a customer data verification and fraud prevention platform for insurance companies. I joined as the sole security function with no existing security structure in place and built the program from zero: policy stack, threat model, technical controls in CI and on the production stack, detection layer, and certification evidence pack. I ran the company's first formal penetration test on its own platform under a signed engagement plan and closed every tracked remediation before sign-off.
 
-Just open `index.html` in any modern browser.
+My work sits at the intersection of application security, product security, and operational security. The through-line is practical: threat modeling that translates into actual controls, auth design that survives real attack traffic, secure development that doesn't slow shipping, and security programs that teams actually follow.
 
-## Deploy on GitHub Pages (free)
+I publish field notes on the work at [medium.com/@mdporschaa](https://medium.com/@mdporschaa). My portfolio at [mdporsch.github.io/md](https://mdporsch.github.io/md/) links to them alongside the projects they document.
 
-1. Create a new **public** repository on GitHub.
-2. Upload `index.html` and this `README.md`.
-3. Go to **Settings → Pages**.
-4. Under Source, select branch `main` and folder `/ (root)`, then Save.
-5. Your free link will be:
-   `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/`
+**Credentials.** CompTIA Security+ (SY0-701, 803/900); Google Professional Cybersecurity Certificate; AWS Cloud Practitioner Essentials; B.Tech from the Federal University of Technology Akure (2023).
 
-## Design notes
+**What I'm looking for.** Security engineering roles, freelance security engagements, and early-stage product work — particularly at companies building something that needs serious security thinking from the start, or that need a security program that actually works.
 
-- Color scheme: white + near-black + strong blue (`#2563EB`)
-- Consistent US English throughout
-- Fully responsive
-- Colors are controlled by CSS variables at the top of the `<style>` block in `index.html`
-
+**Contact.** [mohammedorunsolu@gmail.com](mailto:mohammedorunsolu@gmail.com) · [LinkedIn](https://linkedin.com/in/mohammedorunsolu) · [GitHub](https://github.com/MDPorsch) · [Medium](https://medium.com/@mdporschaa)
