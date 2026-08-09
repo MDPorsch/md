@@ -290,6 +290,8 @@
       font-variation-settings: "opsz" 48, "SOFT" 30;
     }
 
+    .case-title + .case-dek { margin-top: 1rem; }
+
     .case-subtitle {
       font-family: var(--serif);
       font-style: italic;
@@ -556,7 +558,7 @@
           Security engineer and founder with a track record of building secure products and standing up security programs from the ground up. I founded and operate <strong>Breachrr</strong>, a credential exposure monitoring platform, and lead information security at <strong>Verixar Ltd.</strong>, a seed-stage InsurTech, where I designed and implemented the company's entire information security program with no existing structure in place.
         </p>
         <p class="prose">
-          My work sits at the intersection of application security, product security, and operational security. I care about practical security that ships; threat modeling, auth design, continuous monitoring, policy that teams actually follow, and closing findings instead of collecting them.
+          My work sits at the intersection of application security, product security, and operational security. I care about practical security that ships — threat modeling, auth design, continuous monitoring, policy that teams actually follow, and closing findings instead of collecting them.
         </p>
       </div>
     </section>
@@ -568,6 +570,15 @@
       </aside>
       <div class="row-body">
         <h2 class="section-title">Case studies</h2>
+
+        <a href="https://medium.com/@mdporschaa/testing-authorization-boundaries-in-multi-region-multi-tenant-applications-86b5f7e7cc34" target="_blank" rel="noopener noreferrer" class="case-entry">
+          <div class="case-meta">Application Security · 14 min · Medium</div>
+          <h3 class="case-title">Testing Authorization Boundaries in Multi-Region, Multi-Tenant Applications</h3>
+          <p class="case-dek">
+            How I approach authorization boundary testing when the same application serves multiple accounts and multiple regions from a shared backend.
+          </p>
+          <span class="case-link">Read on Medium <span class="case-arrow" aria-hidden="true">→</span></span>
+        </a>
 
         <a href="https://medium.com/@mdporschaa/building-a-security-program-from-zero-a-solo-security-engineers-field-notes-f0902aa22b15" target="_blank" rel="noopener noreferrer" class="case-entry">
           <div class="case-meta">Security Program · 14 min · Medium</div>
@@ -592,26 +603,26 @@
         <article class="job">
           <h3 class="job-role">Founder</h3>
           <div class="job-org">Breachrr</div>
-          <div class="job-meta">2026 - Present · Remote</div>
+          <div class="job-meta">2026 – Present · Remote</div>
           <p class="job-desc">
-            Continuous credential exposure monitoring for small companies; the kind of security tooling that used to require a Fortune 500 budget. Built and shipped end-to-end as sole engineer: application code, security architecture, infrastructure, and operations.
+            Continuous credential exposure monitoring for small companies — the kind of security tooling that used to require a Fortune 500 budget. Built and shipped end-to-end as sole engineer: application code, security architecture, infrastructure, and operations.
           </p>
           <ul class="job-bullets">
-            <li>Free public audit tool as the primary lead magnet; returns actionable findings in under 10 seconds and converts anonymous visitors into trial users without signup.</li>
-            <li>Built the platform's security end-to-end; authentication and session architecture around refresh-token rotation with reuse detection (RFC 6819), authorization on every API endpoint, multi-tenant isolation, role-based team access, and plan-aware feature gating.</li>
-            <li>Operating the full production stack solo; deployment, scheduling, monitoring, database, and billing, with zero engineering headcount.</li>
+            <li>Free public audit tool as the primary lead magnet — returns actionable findings in under 10 seconds and converts anonymous visitors into trial users without signup.</li>
+            <li>Built the platform's security end-to-end — authentication and session architecture around refresh-token rotation with reuse detection (RFC 6819), authorization on every API endpoint, multi-tenant isolation, role-based team access, and plan-aware feature gating.</li>
+            <li>Operating the full production stack solo — deployment, scheduling, monitoring, database, and billing — with zero engineering headcount.</li>
           </ul>
         </article>
 
         <article class="job">
           <h3 class="job-role">Information Security Lead</h3>
           <div class="job-org">Verixar Ltd.</div>
-          <div class="job-meta">2026 - Present · London, UK · Remote</div>
+          <div class="job-meta">2026 – Present · London, UK · Remote</div>
           <p class="job-desc">
             Sole security lead at a seed-stage InsurTech building a customer data verification and fraud prevention platform. Responsible for designing and implementing the company's entire information security program from scratch.
           </p>
           <ul class="job-bullets">
-            <li>Delivered a working security program end-to-end; Information Security Policy, Cyber Incident Response Plan, BCDR, and Cyber Security Risk Register, plus the company's first formal penetration test with every tracked finding closed before sign-off.</li>
+            <li>Delivered a working security program end-to-end — Information Security Policy, Cyber Incident Response Plan, BCDR, and Cyber Security Risk Register — plus the company's first formal penetration test with every tracked finding closed before sign-off.</li>
             <li>Leading NCSC Cyber Essentials certification, established MFA across all accounts, and hardened a fully BYOD environment (FDE, screen lock, Cloudflare DNS filtering) without an MDM.</li>
             <li>Hardened the platform's auth and API surface (JTI blocklist for logout invalidation, refresh-token replay rejection, authorization checks on every endpoint) and wired dependency scanning, Semgrep, and TruffleHog full-history secret scanning into CI as block-on-merge.</li>
           </ul>
@@ -627,7 +638,7 @@
       <div class="row-body">
         <h2 class="section-title">Range</h2>
         <p class="prose">
-          My practice covers application and product security; threat modeling, auth and session architecture, secure development, controls in CI and on the production stack. It covers program development; policy, incident response, risk management, penetration testing, and certification. And it covers infrastructure; TLS posture, secret management, detection and logging, and cloud configuration.
+          My practice covers application and product security — threat modeling, auth and session architecture, secure development, controls in CI and on the production stack. It covers program development — policy, incident response, risk management, penetration testing, and certification. And it covers infrastructure — TLS posture, secret management, detection and logging, and cloud configuration.
         </p>
         <p class="prose">
           The tools change project to project. The discipline is constant.
@@ -644,7 +655,7 @@
         <h2 class="section-title">Education and certifications</h2>
         <ul class="cred-list">
           <li class="cred-item">
-            <span class="cred-name">CompTIA Security+ (SY0-701) - Score: 803/900</span>
+            <span class="cred-name">CompTIA Security+ (SY0-701) — Score: 803/900</span>
             <span class="cred-status">Passed · 2026</span>
           </li>
           <li class="cred-item">
@@ -656,19 +667,19 @@
             <span class="cred-status">Completed · 2026</span>
           </li>
           <li class="cred-item">
-            <span class="cred-name">TS Academy - Cybersecurity Program</span>
+            <span class="cred-name">TS Academy — Cybersecurity Program</span>
             <span class="cred-status">Completed · 2026</span>
           </li>
           <li class="cred-item">
-            <span class="cred-name">GoMyCode - Cybersecurity Bootcamp (Security+ 701)</span>
+            <span class="cred-name">GoMyCode — Cybersecurity Bootcamp (Security+ 701)</span>
             <span class="cred-status">Completed · 2026</span>
           </li>
           <li class="cred-item">
-            <span class="cred-name">TechCrush - Cloud Computing Bootcamp</span>
+            <span class="cred-name">TechCrush — Cloud Computing Bootcamp</span>
             <span class="cred-status">Completed</span>
           </li>
           <li class="cred-item">
-            <span class="cred-name">B.Tech - Federal University of Technology Akure (FUTA)</span>
+            <span class="cred-name">B.Tech — Federal University of Technology Akure (FUTA)</span>
             <span class="cred-status">Graduated 2023</span>
           </li>
         </ul>
@@ -683,7 +694,7 @@
       <div class="row-body">
         <h2 class="section-title">Get in touch</h2>
         <p class="prose">
-          Open to security engineering roles, freelance security engagements, and early-stage product work. If you are building something that needs serious security thinking from the start, or a security program that actually works, reach out.
+          Open to security engineering roles, freelance security engagements, and early-stage product work. If you are building something that needs serious security thinking from the start — or a security program that actually works — reach out.
         </p>
         <div class="contact-grid">
           <div class="contact-label">Email</div>
