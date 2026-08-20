@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohammed Orunsolu — Security Engineer</title>
+  <title>Mohammed Orunsolu | Security Engineer</title>
   <meta name="description" content="Security engineer and founder. Application and product security, security program development, penetration testing. Founder of Breachrr. Information security lead at Verixar." />
 
-  <meta property="og:title" content="Mohammed Orunsolu — Security Engineer" />
+  <meta property="og:title" content="Mohammed Orunsolu | Security Engineer" />
   <meta property="og:description" content="Security engineer and founder. Founder of Breachrr. Information security lead at Verixar." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mdporsch.github.io/md/" />
@@ -14,522 +14,650 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #F5F3EC;
-      --bg-lift: #EFEBE0;
-      --text: #1A1815;
-      --text-muted: #5D5B54;
-      --text-dim: #94908A;
-      --rule: #DDD7C8;
-      --accent: #8B4513;
-      --accent-soft: rgba(139, 69, 19, 0.08);
+      /* Colors */
+      --primary: #0066cc;
+      --primary-focus: #0071e3;
+      --primary-on-dark: #2997ff;
+      --ink: #1d1d1f;
+      --ink-muted-80: #333333;
+      --ink-muted-48: #7a7a7a;
+      --body-muted: #cccccc;
+      --divider-soft: #f0f0f0;
+      --hairline: #e0e0e0;
+      --canvas: #ffffff;
+      --canvas-parchment: #f5f5f7;
+      --surface-pearl: #fafafc;
+      --surface-tile-1: #272729;
+      --surface-tile-2: #2a2a2c;
+      --surface-tile-3: #252527;
+      --surface-black: #000000;
+      --on-dark: #ffffff;
+      --hairline-on-dark: rgba(255, 255, 255, 0.12);
 
-      --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
-      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+      /* Font stacks: real SF Pro on Apple devices, Inter on others */
+      --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+      --font-text: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', system-ui, sans-serif;
+
+      /* Radii */
+      --r-sm: 8px;
+      --r-md: 11px;
+      --r-lg: 18px;
+      --r-pill: 9999px;
+
+      /* Structure */
+      --nav-height: 44px;
+      --tile-content: 980px;
+      --reading: 720px;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-height);
+    }
 
     body {
-      font-family: var(--sans);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      font-size: 16px;
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.44;
+      letter-spacing: -0.374px;
+      color: var(--ink);
+      background: var(--canvas);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    ::selection { background: var(--accent); color: var(--bg); }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
 
     a { color: inherit; text-decoration: none; }
 
-    /* Top nav */
-    .topnav {
+    ::selection { background: var(--primary); color: var(--on-dark); }
+
+    ul { list-style: none; }
+
+    /* =========================================================
+       Global nav (black, 44px, thin)
+       ========================================================= */
+    .global-nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      inset: 0 0 auto 0;
       z-index: 100;
-      background: rgba(245, 243, 236, 0.85);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s ease;
+      height: var(--nav-height);
+      background: var(--surface-black);
+      color: var(--on-dark);
     }
 
-    .topnav.scrolled { border-bottom-color: var(--rule); }
-
-    .topnav-inner {
-      max-width: 860px;
+    .global-nav-inner {
+      max-width: 1024px;
+      height: 100%;
       margin: 0 auto;
-      padding: 0.95rem 2rem;
+      padding: 0 22px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 1.5rem;
+      justify-content: space-between;
+      gap: 24px;
     }
 
-    .topnav-name {
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: 1rem;
-      color: var(--text);
-      letter-spacing: -0.01em;
+    .nav-brand {
+      font-family: var(--font-text);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.12px;
+      line-height: 1;
+      color: var(--on-dark);
+      opacity: 0.9;
+      transition: opacity 0.2s ease;
     }
 
-    .topnav-links {
-      list-style: none;
+    .nav-brand:hover { opacity: 1; }
+
+    .nav-links {
       display: flex;
-      gap: 1.5rem;
+      align-items: center;
+      gap: 24px;
     }
 
-    .topnav-links a {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      transition: color 0.15s ease;
+    .nav-links a {
+      font-family: var(--font-text);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.12px;
+      line-height: 1;
+      color: var(--on-dark);
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
     }
 
-    .topnav-links a:hover { color: var(--accent); }
+    .nav-links a:hover { opacity: 1; }
 
-    .topnav-toggle {
+    .nav-toggle {
       display: none;
-      background: none;
+      background: transparent;
       border: none;
-      color: var(--text);
+      color: var(--on-dark);
       cursor: pointer;
-      padding: 0.25rem;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      padding: 8px;
+      line-height: 0;
     }
 
-    /* Main */
-    main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 2rem 6rem;
-    }
+    .nav-toggle svg { width: 18px; height: 18px; }
 
-    section { scroll-margin-top: 4.5rem; }
-
-    /* Hero */
-    .hero {
-      padding: 9rem 0 6rem;
-    }
-
-    .hero-status {
+    /* =========================================================
+       Buttons
+       ========================================================= */
+    .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 3rem;
+      justify-content: center;
+      min-height: 44px;
+      padding: 11px 22px;
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.374px;
+      border: 1px solid transparent;
+      border-radius: var(--r-pill);
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s ease, transform 0.15s ease;
     }
 
-    .hero-status::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse 2.4s ease-in-out infinite;
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-dark);
+      border-color: var(--primary);
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.35; }
+    .btn-primary:hover { background: var(--primary-focus); border-color: var(--primary-focus); }
+    .btn-primary:active { transform: scale(0.95); }
+    .btn-primary:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 3px; }
+
+    /* =========================================================
+       Tiles
+       ========================================================= */
+    .tile {
+      padding: 80px 22px;
+      overflow: hidden;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .hero-status::before { animation: none; }
-      html { scroll-behavior: auto; }
+    .tile-light   { background: var(--canvas); color: var(--ink); }
+    .tile-parchment { background: var(--canvas-parchment); color: var(--ink); }
+    .tile-dark    { background: var(--surface-tile-1); color: var(--on-dark); }
+    .tile-dark-2  { background: var(--surface-tile-2); color: var(--on-dark); }
+    .tile-dark-3  { background: var(--surface-tile-3); color: var(--on-dark); }
+
+    .tile-inner {
+      max-width: var(--tile-content);
+      margin: 0 auto;
+    }
+
+    /* =========================================================
+       Hero
+       ========================================================= */
+    .hero {
+      padding-top: calc(var(--nav-height) + 80px);
+      padding-bottom: 100px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 820px;
+      margin: 0 auto;
     }
 
     .hero-name {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(3.5rem, 10vw, 6.5rem);
-      line-height: 0.95;
-      letter-spacing: -0.035em;
-      color: var(--text);
-      margin-bottom: 2rem;
-      font-variation-settings: "opsz" 144, "SOFT" 30;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--accent);
-      letter-spacing: 0.03em;
-      margin-bottom: 2rem;
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 600;
+      line-height: 1.07;
+      letter-spacing: -0.28px;
+      color: var(--ink);
+      margin-bottom: 24px;
     }
 
     .hero-tagline {
-      font-family: var(--serif);
-      font-style: italic;
+      font-family: var(--font-display);
+      font-size: 28px;
       font-weight: 400;
-      font-size: clamp(1.25rem, 2.4vw, 1.5rem);
-      line-height: 1.4;
-      color: var(--text-muted);
-      max-width: 30rem;
-      margin-bottom: 2.5rem;
-      font-variation-settings: "opsz" 24;
+      line-height: 1.14;
+      letter-spacing: 0.196px;
+      color: var(--ink-muted-80);
+      max-width: 720px;
+      margin: 0 auto 40px;
     }
 
-    .hero-jump {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding-bottom: 4px;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s ease, gap 0.2s ease;
-    }
-
-    .hero-jump:hover {
-      border-bottom-color: var(--accent);
-      gap: 0.75rem;
-    }
-
-    /* Row layout: marker column + content column */
-    .row {
-      display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 3rem;
-      padding-top: 6rem;
-    }
-
-    .row-marker {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      padding-top: 0.35rem;
-    }
-
-    .row-marker span {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .row-marker span:first-child { color: var(--accent); }
-
+    /* =========================================================
+       Section heads (tile headlines)
+       ========================================================= */
     .section-title {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 600;
       line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 1.5rem;
-      font-variation-settings: "opsz" 48, "SOFT" 30;
+      letter-spacing: 0;
+      color: inherit;
+      margin-bottom: 48px;
     }
 
-    /* Prose */
+    /* =========================================================
+       Prose
+       ========================================================= */
     .prose {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-      max-width: 34rem;
+      max-width: var(--reading);
     }
 
-    .prose:last-child { margin-bottom: 0; }
+    .prose p {
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .prose p:last-child { margin-bottom: 0; }
 
     .prose strong {
-      color: var(--text);
+      color: var(--ink);
       font-weight: 600;
     }
 
-    /* Case study entries */
-    .case-entry {
-      display: block;
-      padding: 2rem 0 1.85rem;
-      border-top: 1px solid var(--rule);
-      transition: background 0.2s ease;
+    .tile-dark .prose p,
+    .tile-dark-2 .prose p,
+    .tile-dark-3 .prose p { color: var(--on-dark); }
+
+    .tile-dark .prose strong,
+    .tile-dark-2 .prose strong,
+    .tile-dark-3 .prose strong { color: var(--on-dark); }
+
+    /* =========================================================
+       Case study cards (utility card pattern)
+       ========================================================= */
+    .cases {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      max-width: var(--reading);
     }
 
-    .case-entry:last-child { border-bottom: 1px solid var(--rule); }
+    .case-card {
+      display: block;
+      background: var(--canvas);
+      border: 1px solid var(--hairline);
+      border-radius: var(--r-lg);
+      padding: 32px;
+      transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+
+    .case-card:hover { border-color: var(--ink-muted-48); }
+    .case-card:active { transform: scale(0.99); }
+    .case-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
 
     .case-meta {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
+      font-family: var(--font-text);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.43;
+      letter-spacing: -0.224px;
+      color: var(--ink-muted-48);
+      margin-bottom: 12px;
     }
 
     .case-title {
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: 1.65rem;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 0.35rem;
-      transition: color 0.2s ease;
-      font-variation-settings: "opsz" 48, "SOFT" 30;
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1.19;
+      letter-spacing: 0.231px;
+      color: var(--ink);
+      margin-bottom: 8px;
     }
 
-    .case-title + .case-dek { margin-top: 1rem; }
-
     .case-subtitle {
-      font-family: var(--serif);
-      font-style: italic;
+      font-family: var(--font-text);
+      font-size: 17px;
       font-weight: 400;
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 1.15rem;
-      font-variation-settings: "opsz" 20;
+      line-height: 1.24;
+      letter-spacing: -0.374px;
+      color: var(--ink-muted-80);
+      margin-bottom: 12px;
     }
 
     .case-dek {
-      font-size: 0.95rem;
-      line-height: 1.65;
-      color: var(--text-muted);
-      max-width: 32rem;
-      margin-bottom: 1.5rem;
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: var(--ink-muted-80);
+      margin-top: 12px;
+      margin-bottom: 20px;
     }
+
+    .case-title + .case-dek { margin-top: 12px; }
+    .case-subtitle + .case-dek { margin-top: 0; }
 
     .case-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .case-arrow {
       display: inline-block;
-      transition: transform 0.2s ease;
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.374px;
+      color: var(--primary);
+      transition: color 0.2s ease;
     }
 
-    .case-entry:hover .case-title { color: var(--accent); }
-    .case-entry:hover .case-arrow { transform: translateX(4px); }
+    .case-card:hover .case-link { color: var(--primary-focus); }
 
-    /* Jobs */
-    .job {
-      padding: 2rem 0 1.85rem;
-      border-top: 1px solid var(--rule);
+    /* =========================================================
+       Experience (jobs)
+       ========================================================= */
+    .experience {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      max-width: var(--reading);
     }
-
-    .job:last-child { border-bottom: 1px solid var(--rule); }
 
     .job-role {
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: 1.5rem;
-      color: var(--text);
-      letter-spacing: -0.015em;
-      margin-bottom: 0.2rem;
-      line-height: 1.2;
-      font-variation-settings: "opsz" 36;
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.14;
+      letter-spacing: 0.196px;
+      color: inherit;
+      margin-bottom: 4px;
     }
 
     .job-org {
-      font-size: 0.95rem;
-      color: var(--text);
-      font-weight: 500;
-      margin-bottom: 0.4rem;
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.24;
+      letter-spacing: -0.374px;
+      color: inherit;
+      margin-bottom: 4px;
     }
 
     .job-meta {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 1.1rem;
+      font-family: var(--font-text);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.43;
+      letter-spacing: -0.224px;
+      color: var(--ink-muted-48);
+      margin-bottom: 20px;
     }
+
+    .tile-dark .job-meta,
+    .tile-dark-2 .job-meta,
+    .tile-dark-3 .job-meta { color: var(--body-muted); }
 
     .job-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 34rem;
-      margin-bottom: 1.15rem;
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: var(--ink);
+      margin-bottom: 20px;
     }
 
+    .tile-dark .job-desc,
+    .tile-dark-2 .job-desc,
+    .tile-dark-3 .job-desc { color: var(--on-dark); }
+
     .job-bullets {
-      list-style: none;
-      max-width: 34rem;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
     .job-bullets li {
       position: relative;
-      padding-left: 1.4rem;
-      font-size: 0.925rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-      margin-bottom: 0.65rem;
+      padding-left: 22px;
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: var(--ink);
     }
-
-    .job-bullets li:last-child { margin-bottom: 0; }
 
     .job-bullets li::before {
-      content: '·';
+      content: "";
       position: absolute;
-      left: 0.5rem;
-      top: -0.05em;
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 1.3rem;
+      left: 6px;
+      top: 11px;
+      width: 4px;
+      height: 4px;
+      background: var(--ink-muted-48);
+      border-radius: 50%;
     }
 
-    /* Credentials */
-    .cred-list { list-style: none; }
+    .tile-dark .job-bullets li,
+    .tile-dark-2 .job-bullets li,
+    .tile-dark-3 .job-bullets li { color: var(--on-dark); }
 
-    .cred-item {
+    .tile-dark .job-bullets li::before,
+    .tile-dark-2 .job-bullets li::before,
+    .tile-dark-3 .job-bullets li::before { background: var(--body-muted); }
+
+    /* =========================================================
+       Credentials list
+       ========================================================= */
+    .creds {
+      max-width: var(--reading);
+    }
+
+    .cred {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: 1.5rem;
-      padding: 0.85rem 0;
-      border-top: 1px solid var(--rule);
+      gap: 24px;
+      padding: 20px 0;
+      border-top: 1px solid var(--hairline);
     }
 
-    .cred-item:last-child { border-bottom: 1px solid var(--rule); }
+    .cred:last-child { border-bottom: 1px solid var(--hairline); }
+
+    .tile-dark .cred,
+    .tile-dark-2 .cred,
+    .tile-dark-3 .cred { border-top-color: var(--hairline-on-dark); }
+
+    .tile-dark .cred:last-child,
+    .tile-dark-2 .cred:last-child,
+    .tile-dark-3 .cred:last-child { border-bottom-color: var(--hairline-on-dark); }
 
     .cred-name {
-      font-size: 0.925rem;
-      color: var(--text);
-      font-weight: 500;
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: var(--ink);
     }
 
+    .tile-dark .cred-name,
+    .tile-dark-2 .cred-name,
+    .tile-dark-3 .cred-name { color: var(--on-dark); }
+
     .cred-status {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--text-dim);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      font-family: var(--font-text);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.43;
+      letter-spacing: -0.224px;
+      color: var(--ink-muted-48);
       white-space: nowrap;
     }
 
-    /* Contact */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: max-content 1fr;
-      column-gap: 2rem;
-      row-gap: 0.75rem;
-      margin-top: 0.5rem;
-      max-width: 32rem;
+    .tile-dark .cred-status,
+    .tile-dark-2 .cred-status,
+    .tile-dark-3 .cred-status { color: var(--body-muted); }
+
+    /* =========================================================
+       Contact
+       ========================================================= */
+    .contact-prose {
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: inherit;
+      max-width: var(--reading);
+      margin-bottom: 40px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: var(--reading);
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 32px;
+      align-items: baseline;
     }
 
     .contact-label {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      align-self: center;
+      font-family: var(--font-text);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.29;
+      letter-spacing: -0.224px;
+      color: inherit;
+      min-width: 96px;
     }
 
     .contact-link {
-      font-family: var(--mono);
-      font-size: 0.85rem;
-      color: var(--text);
-      transition: color 0.15s ease;
-      word-break: break-all;
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: var(--primary);
+      transition: color 0.2s ease;
     }
 
-    .contact-link:hover { color: var(--accent); }
+    .contact-link:hover { color: var(--primary-focus); }
 
-    /* Footer */
+    .tile-dark .contact-link,
+    .tile-dark-2 .contact-link,
+    .tile-dark-3 .contact-link { color: var(--primary-on-dark); }
+
+    .tile-dark .contact-link:hover,
+    .tile-dark-2 .contact-link:hover,
+    .tile-dark-3 .contact-link:hover { color: #56b0ff; }
+
+    /* =========================================================
+       Footer
+       ========================================================= */
     footer {
-      max-width: 860px;
+      background: var(--canvas-parchment);
+      padding: 32px 22px;
+      color: var(--ink-muted-48);
+    }
+
+    .footer-inner {
+      max-width: var(--tile-content);
       margin: 0 auto;
-      padding: 3rem 2rem 2rem;
-      margin-top: 5rem;
-      border-top: 1px solid var(--rule);
     }
 
     footer p {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      font-family: var(--font-text);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.12px;
+      line-height: 1;
     }
 
-    /* Mobile */
-    @media (max-width: 720px) {
-      main { padding: 0 1.5rem 4rem; }
-      .topnav-inner { padding: 0.85rem 1.5rem; }
+    /* =========================================================
+       Responsive
+       ========================================================= */
+    @media (max-width: 1068px) {
+      .hero-name { font-size: 40px; line-height: 1.1; letter-spacing: 0; }
+      .hero-tagline { font-size: 24px; }
+      .section-title { font-size: 34px; letter-spacing: -0.374px; }
+      .job-role { font-size: 24px; }
+    }
 
-      .topnav-links {
+    @media (max-width: 833px) {
+      .nav-links {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--bg);
-        border-bottom: 1px solid var(--rule);
+        background: var(--surface-black);
         flex-direction: column;
-        padding: 1rem 1.5rem 1.25rem;
-        gap: 0.9rem;
+        gap: 0;
+        padding: 8px 0;
       }
-
-      .topnav-links.open { display: flex; }
-      .topnav-toggle { display: block; }
-
-      .hero { padding: 7rem 0 4rem; }
-      .hero-status { margin-bottom: 2.25rem; }
-      .hero-name { line-height: 0.98; }
-
-      .row {
-        grid-template-columns: 1fr;
-        gap: 0.9rem;
-        padding-top: 4.5rem;
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 14px 22px;
+        opacity: 1;
+        font-size: 14px;
       }
+      .nav-toggle { display: inline-flex; align-items: center; }
+      .tile { padding: 64px 22px; }
+      .case-card { padding: 24px; }
+      .contact-row { flex-direction: column; gap: 4px; }
+      .contact-label { min-width: 0; }
+    }
 
-      .row-marker { flex-direction: row; gap: 0.6rem; padding-top: 0; }
+    @media (max-width: 640px) {
+      .hero { padding-top: calc(var(--nav-height) + 48px); padding-bottom: 64px; }
+      .hero-name { font-size: 34px; }
+      .hero-tagline { font-size: 21px; line-height: 1.24; }
+      .section-title { font-size: 28px; margin-bottom: 36px; }
+      .job-role { font-size: 21px; }
+      .cred { flex-direction: column; align-items: flex-start; gap: 4px; padding: 16px 0; }
+      .tile { padding: 56px 22px; }
+    }
 
-      .cred-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-      }
-
-      .contact-grid { grid-template-columns: 1fr; row-gap: 0.25rem; column-gap: 0; }
-      .contact-label { margin-top: 0.75rem; }
-      .contact-label:first-child { margin-top: 0; }
-
-      footer { padding: 2.5rem 1.5rem 2rem; margin-top: 3rem; }
+    @media (max-width: 419px) {
+      .hero-name { font-size: 28px; }
+      .hero-tagline { font-size: 19px; }
+      .section-title { font-size: 24px; }
+      .case-card { padding: 22px; }
     }
   </style>
 </head>
 <body>
 
-  <nav class="topnav" id="topnav">
-    <div class="topnav-inner">
-      <a href="#" class="topnav-name">Mohammed Orunsolu</a>
-      <button class="topnav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
-      <ul class="topnav-links" id="navLinks">
+  <nav class="global-nav" id="globalNav">
+    <div class="global-nav-inner">
+      <a href="#" class="nav-brand">Mohammed Orunsolu</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M2 5h14M2 9h14M2 13h14"/>
+        </svg>
+      </button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
-        <li><a href="#field-notes">Field notes</a></li>
-        <li><a href="#work">Work</a></li>
+        <li><a href="#case-studies">Case studies</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#credentials">Credentials</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -538,176 +666,158 @@
 
   <main>
 
-    <section class="hero" id="top">
-      <div class="hero-status">Currently — Breachrr &amp; Verixar</div>
-      <h1 class="hero-name">Mohammed<br>Orunsolu.</h1>
-      <p class="hero-tagline">
-        Security Engineer and Founder specializing in Application &amp; Product Security. I build secure products and stand up security programs from zero.
-      </p>
-      <a href="#field-notes" class="hero-jump">See field notes <span aria-hidden="true">↓</span></a>
-    </section>
-
-    <section class="row" id="about">
-      <aside class="row-marker">
-        <span>§ 01</span>
-        <span>About</span>
-      </aside>
-      <div class="row-body">
-        <h2 class="section-title">Who I am</h2>
-        <p class="prose">
-          Security engineer and founder with a track record of building secure products and standing up security programs from the ground up. I founded and operate <strong>Breachrr</strong>, a credential exposure monitoring platform, and lead information security at <strong>Verixar Ltd.</strong>, a seed-stage InsurTech, where I designed and implemented the company's entire information security program with no existing structure in place.
+    <section class="tile tile-light hero" id="top">
+      <div class="hero-inner">
+        <h1 class="hero-name">Mohammed Orunsolu</h1>
+        <p class="hero-tagline">
+          Security Engineer and Founder specializing in Application &amp; Product Security. I build secure products and stand up security programs from zero.
         </p>
-        <p class="prose">
-          My work sits at the intersection of application security, product security, and operational security. I care about practical security that ships; threat modeling, auth design, continuous monitoring, policy that teams actually follow, and closing findings instead of collecting them.
-        </p>
+        <a href="#case-studies" class="btn btn-primary">See case studies</a>
       </div>
     </section>
 
-    <section class="row" id="field-notes">
-      <aside class="row-marker">
-        <span>§ 02</span>
-        <span>Field notes</span>
-      </aside>
-      <div class="row-body">
+    <section id="about" class="tile tile-dark">
+      <div class="tile-inner">
+        <h2 class="section-title">About</h2>
+        <div class="prose">
+          <p>Security engineer and founder with a track record of building secure products and standing up security programs from the ground up. I founded and operate <strong>Breachrr</strong>, a credential exposure monitoring platform, and lead information security at <strong>Verixar Ltd.</strong>, a seed-stage InsurTech, where I designed and implemented the company's entire information security program with no existing structure in place.</p>
+          <p>My work sits at the intersection of application security, product security, and operational security. I care about practical security that ships: threat modeling, auth design, continuous monitoring, policy that teams actually follow, and remediation that closes findings.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="case-studies" class="tile tile-parchment">
+      <div class="tile-inner">
         <h2 class="section-title">Case studies</h2>
+        <div class="cases">
 
-        <a href="https://medium.com/@mdporschaa/testing-authorization-boundaries-in-multi-region-multi-tenant-applications-86b5f7e7cc34" target="_blank" rel="noopener noreferrer" class="case-entry">
-          <div class="case-meta">Application Security · 14 min · Medium</div>
-          <h3 class="case-title">Testing Authorization Boundaries in Multi-Region, Multi-Tenant Applications</h3>
-          <p class="case-dek">
-            How I approach authorization boundary testing when the same application serves multiple accounts and multiple regions from a shared backend.
-          </p>
-          <span class="case-link">Read on Medium <span class="case-arrow" aria-hidden="true">→</span></span>
-        </a>
+          <a href="https://medium.com/@mdporschaa/testing-the-authentication-boundary-a-case-study-in-session-and-identity-security-7ecd80010cc8" target="_blank" rel="noopener noreferrer" class="case-card">
+            <div class="case-meta">Application Security · 16 min · Medium</div>
+            <h3 class="case-title">Testing the Authentication Boundary: A Case Study in Session and Identity Security</h3>
+            <p class="case-dek">The security properties I need to establish, the attack categories I test against, and the harness that makes it repeatable.</p>
+            <span class="case-link">Read on Medium →</span>
+          </a>
 
-        <a href="https://medium.com/@mdporschaa/building-a-security-program-from-zero-a-solo-security-engineers-field-notes-f0902aa22b15" target="_blank" rel="noopener noreferrer" class="case-entry">
-          <div class="case-meta">Security Program · 14 min · Medium</div>
-          <h3 class="case-title">Building a Security Program from Zero</h3>
-          <p class="case-subtitle">A Solo Security Engineer's Field Notes</p>
-          <p class="case-dek">
-            What I did, with the tools and the decisions, building a client's security program end-to-end as the sole security function.
-          </p>
-          <span class="case-link">Read on Medium <span class="case-arrow" aria-hidden="true">→</span></span>
-        </a>
+          <a href="https://medium.com/@mdporschaa/testing-authorization-boundaries-in-multi-region-multi-tenant-applications-86b5f7e7cc34" target="_blank" rel="noopener noreferrer" class="case-card">
+            <div class="case-meta">Application Security · 14 min · Medium</div>
+            <h3 class="case-title">Testing Authorization Boundaries in Multi-Region, Multi-Tenant Applications</h3>
+            <p class="case-dek">How I approach authorization boundary testing when the same application serves multiple accounts and multiple regions from a shared backend.</p>
+            <span class="case-link">Read on Medium →</span>
+          </a>
+
+          <a href="https://medium.com/@mdporschaa/building-a-security-program-from-zero-a-solo-security-engineers-field-notes-f0902aa22b15" target="_blank" rel="noopener noreferrer" class="case-card">
+            <div class="case-meta">Security Program · 14 min · Medium</div>
+            <h3 class="case-title">Building a Security Program from Zero</h3>
+            <p class="case-subtitle">A Solo Security Engineer's Field Notes</p>
+            <p class="case-dek">What I did, with the tools and the decisions, building a client's security program end-to-end as the sole security function.</p>
+            <span class="case-link">Read on Medium →</span>
+          </a>
+
+        </div>
       </div>
     </section>
 
-    <section class="row" id="work">
-      <aside class="row-marker">
-        <span>§ 03</span>
-        <span>Work</span>
-      </aside>
-      <div class="row-body">
+    <section id="experience" class="tile tile-dark-2">
+      <div class="tile-inner">
         <h2 class="section-title">Experience</h2>
+        <div class="experience">
 
-        <article class="job">
-          <h3 class="job-role">Founder</h3>
-          <div class="job-org">Breachrr</div>
-          <div class="job-meta">2026 – Present · Remote</div>
-          <p class="job-desc">
-            Continuous credential exposure monitoring for small companies. The kind of security tooling that used to require a Fortune 500 budget. Built and shipped end-to-end as sole engineer: application code, security architecture, infrastructure, and operations.
-          </p>
-          <ul class="job-bullets">
-            <li>Free public audit tool as the primary lead magnet. Returns actionable findings in under 10 seconds and converts anonymous visitors into trial users without signup.</li>
-            <li>Built the platform's security end-to-end. Authentication and session architecture around refresh-token rotation with reuse detection (RFC 6819), authorization on every API endpoint, multi-tenant isolation, role-based team access, and plan-aware feature gating.</li>
-            <li>Operating the full production stack solo. Deployment, scheduling, monitoring, database, and billing with zero engineering headcount.</li>
-          </ul>
-        </article>
+          <article class="job">
+            <h3 class="job-role">Founder</h3>
+            <div class="job-org">Breachrr</div>
+            <div class="job-meta">2026 to Present · Remote</div>
+            <p class="job-desc">Continuous credential exposure monitoring for small companies. Security tooling that used to require a Fortune 500 budget, built and shipped end-to-end as sole engineer: application code, security architecture, infrastructure, and operations.</p>
+            <ul class="job-bullets">
+              <li>Free public audit tool as the primary lead magnet. Returns actionable findings in under 10 seconds and converts anonymous visitors into trial users without signup.</li>
+              <li>Built the platform's security end-to-end: authentication and session architecture around refresh-token rotation with reuse detection (RFC 6819), authorization on every API endpoint, multi-tenant isolation, role-based team access, and plan-aware feature gating.</li>
+              <li>Operating the full production stack solo: deployment, scheduling, monitoring, database, and billing, with zero engineering headcount.</li>
+            </ul>
+          </article>
 
-        <article class="job">
-          <h3 class="job-role">Information Security Lead</h3>
-          <div class="job-org">Verixar Ltd.</div>
-          <div class="job-meta">2026 – Present · London, UK · Remote</div>
-          <p class="job-desc">
-            Sole security lead at a seed-stage InsurTech building a customer data verification and fraud prevention platform. Responsible for designing and implementing the company's entire information security program from scratch.
-          </p>
-          <ul class="job-bullets">
-            <li>Delivered a working security program end-to-end. Information Security Policy, Cyber Incident Response Plan, BCDR, and Cyber Security Risk Register, plus the company's first formal penetration test with every tracked finding closed before sign-off.</li>
-            <li>Leading NCSC Cyber Essentials certification, established MFA across all accounts, and hardened a fully BYOD environment (FDE, screen lock, Cloudflare DNS filtering) without an MDM.</li>
-            <li>Hardened the platform's auth and API surface (JTI blocklist for logout invalidation, refresh-token replay rejection, authorization checks on every endpoint) and wired dependency scanning, Semgrep, and TruffleHog full-history secret scanning into CI as block-on-merge.</li>
-          </ul>
-        </article>
+          <article class="job">
+            <h3 class="job-role">Information Security Lead</h3>
+            <div class="job-org">Verixar Ltd.</div>
+            <div class="job-meta">2026 to Present · London, UK · Remote</div>
+            <p class="job-desc">Sole security lead at a seed-stage InsurTech building a customer data verification and fraud prevention platform. Responsible for designing and implementing the company's entire information security program from scratch.</p>
+            <ul class="job-bullets">
+              <li>Delivered a working security program end-to-end: Information Security Policy, Cyber Incident Response Plan, BCDR, and Cyber Security Risk Register, plus the company's first formal penetration test with every tracked finding closed before sign-off.</li>
+              <li>Leading NCSC Cyber Essentials certification, established MFA across all accounts, and hardened a fully BYOD environment (FDE, screen lock, Cloudflare DNS filtering) without an MDM.</li>
+              <li>Hardened the platform's auth and API surface (JTI blocklist for logout invalidation, refresh-token replay rejection, authorization checks on every endpoint) and wired dependency scanning, Semgrep, and TruffleHog full-history secret scanning into CI as block-on-merge.</li>
+            </ul>
+          </article>
+
+        </div>
       </div>
     </section>
 
-    <section class="row" id="practice">
-      <aside class="row-marker">
-        <span>§ 04</span>
-        <span>Practice</span>
-      </aside>
-      <div class="row-body">
+    <section id="practice" class="tile tile-light">
+      <div class="tile-inner">
         <h2 class="section-title">Range</h2>
-        <p class="prose">
-          My practice covers application and product security. Threat modeling, auth and session architecture, secure development, controls in CI and on the production stack. It covers program development; policy, incident response, risk management, penetration testing, and certification. And it covers infrastructure; TLS posture, secret management, detection and logging, and cloud configuration.
-        </p>
-        <p class="prose">
-          The tools change project to project. The discipline is constant.
-        </p>
+        <div class="prose">
+          <p>My practice covers application and product security: threat modeling, auth and session architecture, secure development, controls in CI and on the production stack. It covers program development: policy, incident response, risk management, penetration testing, and certification. And it covers infrastructure: TLS posture, secret management, detection and logging, and cloud configuration.</p>
+        </div>
       </div>
     </section>
 
-    <section class="row" id="credentials">
-      <aside class="row-marker">
-        <span>§ 05</span>
-        <span>Credentials</span>
-      </aside>
-      <div class="row-body">
-        <h2 class="section-title">Education and certifications</h2>
-        <ul class="cred-list">
-          <li class="cred-item">
-            <span class="cred-name">CompTIA Security+ (SY0-701) - Score: 803/900</span>
-            <span class="cred-status">Passed · 2026</span>
+    <section id="credentials" class="tile tile-dark-3">
+      <div class="tile-inner">
+        <h2 class="section-title">Credentials</h2>
+        <ul class="creds">
+          <li class="cred">
+            <span class="cred-name">CompTIA Security+ (SY0-701), Score: 803/900</span>
+            <span class="cred-status">Passed, 2026</span>
           </li>
-          <li class="cred-item">
+          <li class="cred">
             <span class="cred-name">Google Professional Cybersecurity Certificate</span>
-            <span class="cred-status">Completed · 2025</span>
+            <span class="cred-status">Completed, 2025</span>
           </li>
-          <li class="cred-item">
+          <li class="cred">
             <span class="cred-name">AWS Cloud Practitioner Essentials</span>
-            <span class="cred-status">Completed · 2026</span>
+            <span class="cred-status">Completed, 2026</span>
           </li>
-          <li class="cred-item">
-            <span class="cred-name">TS Academy - Cybersecurity Program</span>
-            <span class="cred-status">Completed · 2026</span>
+          <li class="cred">
+            <span class="cred-name">TS Academy, Cybersecurity Program</span>
+            <span class="cred-status">Completed, 2026</span>
           </li>
-          <li class="cred-item">
-            <span class="cred-name">GoMyCode - Cybersecurity Bootcamp (Security+ 701)</span>
-            <span class="cred-status">Completed · 2026</span>
+          <li class="cred">
+            <span class="cred-name">GoMyCode, Cybersecurity Bootcamp (Security+ 701)</span>
+            <span class="cred-status">Completed, 2026</span>
           </li>
-          <li class="cred-item">
-            <span class="cred-name">TechCrush - Cloud Computing Bootcamp</span>
+          <li class="cred">
+            <span class="cred-name">TechCrush, Cloud Computing Bootcamp</span>
             <span class="cred-status">Completed</span>
           </li>
-          <li class="cred-item">
-            <span class="cred-name">B.Tech - Federal University of Technology Akure (FUTA)</span>
+          <li class="cred">
+            <span class="cred-name">B.Tech, Federal University of Technology Akure (FUTA)</span>
             <span class="cred-status">Graduated 2023</span>
           </li>
         </ul>
       </div>
     </section>
 
-    <section class="row" id="contact">
-      <aside class="row-marker">
-        <span>§ 06</span>
-        <span>Contact</span>
-      </aside>
-      <div class="row-body">
-        <h2 class="section-title">Get in touch</h2>
-        <p class="prose">
+    <section id="contact" class="tile tile-parchment">
+      <div class="tile-inner">
+        <h2 class="section-title">Contact</h2>
+        <p class="contact-prose">
           Open to security engineering roles, freelance security engagements, and early-stage product work. If you are building something that needs serious security thinking from the start, or a security program that actually works, reach out.
         </p>
-        <div class="contact-grid">
-          <div class="contact-label">Email</div>
-          <a class="contact-link" href="mailto:mohammedorunsolu@gmail.com">mohammedorunsolu@gmail.com</a>
-
-          <div class="contact-label">LinkedIn</div>
-          <a class="contact-link" href="https://linkedin.com/in/mohammedorunsolu" target="_blank" rel="noopener noreferrer">/in/mohammedorunsolu</a>
-
-          <div class="contact-label">GitHub</div>
-          <a class="contact-link" href="https://github.com/MDPorsch" target="_blank" rel="noopener noreferrer">/MDPorsch</a>
-
-          <div class="contact-label">Medium</div>
-          <a class="contact-link" href="https://medium.com/@mdporschaa" target="_blank" rel="noopener noreferrer">/@mdporschaa</a>
+        <div class="contact-links">
+          <div class="contact-row">
+            <span class="contact-label">Email</span>
+            <a class="contact-link" href="mailto:mohammedorunsolu@gmail.com">mohammedorunsolu@gmail.com</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">LinkedIn</span>
+            <a class="contact-link" href="https://linkedin.com/in/mohammedorunsolu" target="_blank" rel="noopener noreferrer">linkedin.com/in/mohammedorunsolu</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">GitHub</span>
+            <a class="contact-link" href="https://github.com/MDPorsch" target="_blank" rel="noopener noreferrer">github.com/MDPorsch</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Medium</span>
+            <a class="contact-link" href="https://medium.com/@mdporschaa" target="_blank" rel="noopener noreferrer">medium.com/@mdporschaa</a>
+          </div>
         </div>
       </div>
     </section>
@@ -715,22 +825,21 @@
   </main>
 
   <footer>
-    <p>© 2026 Mohammed Orunsolu</p>
+    <div class="footer-inner">
+      <p>Copyright &copy; 2026 Mohammed Orunsolu. All rights reserved.</p>
+    </div>
   </footer>
 
   <script>
-    const nav = document.getElementById('topnav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navLinks');
+
     toggle.addEventListener('click', () => {
       const isOpen = links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(isOpen));
     });
-    links.querySelectorAll('a').forEach(a => {
+
+    links.querySelectorAll('a').forEach((a) => {
       a.addEventListener('click', () => {
         links.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
